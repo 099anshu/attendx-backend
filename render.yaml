@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: attendx-backend
+    env: node
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: MONGODB_URI
+        fromDatabase:
+          name: attendx-mongo
+          property: connectionString
+      - key: JWT_SECRET
+        generateValue: true
+      - key: TEACHER_CODE
+        value: TEACH2025
